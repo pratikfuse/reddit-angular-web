@@ -14,7 +14,7 @@ export class RedditEffects {
     this.actions$.pipe(
       ofType(RedditActions.loadPosts),
       mergeMap(({ subreddit, sort }) =>
-        this.redditService.getPosts(subreddit, sort).pipe(
+        this.redditService.getPosts(subreddit || "popular", sort).pipe(
           map((data: any) =>
             RedditActions.loadPostsSuccess({
               posts: data.data.children.map((c: any) => c.data),

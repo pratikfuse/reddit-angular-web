@@ -9,11 +9,7 @@
     <div class="col-md-6 mb-3">
       <div class="card shadow-sm">
         @if(post.thumbnail && post.thumbnail.startsWith('http')) {
-            <img
-                [src]="post.thumbnail"
-                class="card-img-top"
-                alt="thumbnail"
-            />
+        <img [src]="post.thumbnail" class="card-img-top" alt="thumbnail" />
         }
         <div class="card-body">
           <h5 class="card-title">{{ post.title }}</h5>

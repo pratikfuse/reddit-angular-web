@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store';
 
 export const loadPosts = createAction(
   '[Reddit] Load Posts',
-  props<{ subreddit: string; sort: string }>()
+  props<{ subreddit?: string; sort: string}>()
 );
 
 export const loadPostsSuccess = createAction(

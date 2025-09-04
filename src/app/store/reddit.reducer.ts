@@ -17,7 +17,7 @@ export const redditReducer = createReducer(
   initialState,
   on(RedditActions.loadPosts, (state) => ({ ...state, loading: true })),
   on(RedditActions.loadPostsSuccess, (state, { posts }) => ({
-    ...state,
+    error: null,
     posts,
     loading: false,
   })),
