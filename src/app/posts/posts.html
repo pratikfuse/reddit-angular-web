@@ -1,0 +1,29 @@
+<div class="container my-4">
+  <h2>/r/{{ subreddit }} ({{ sort }})</h2>
+  <button class="btn btn-sm btn-primary mb-3" (click)="loadPosts()">Reload</button>
+
+  <div *ngIf="loading$ | async" class="alert alert-info">Loading posts...</div>
+
+  <div class="row">
+    @for(post of posts$ | async; track post.id) {
+    <div class="col-md-6 mb-3">
+      <div class="card shadow-sm">
+        @if(post.thumbnail && post.thumbnail.startsWith('http')) {
+            <img
+                [src]="post.thumbnail"
+                class="card-img-top"
+                alt="thumbnail"
+            />
+        }
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">👍 {{ post.ups }} | 💬 {{ post.num_comments }}</p>
+          <a [href]="'https://reddit.com' + post.permalink" target="_blank" class="btn btn-primary">
+            View on Reddit
+          </a>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>
