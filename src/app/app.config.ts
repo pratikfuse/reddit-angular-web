@@ -12,7 +12,7 @@ import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { redditReducer } from './store/reddit.reducer';
 import { RedditEffects } from './store/reddit.effect';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
 export const appConfig: ApplicationConfig = {
@@ -22,7 +22,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(withFetch()),
     provideClientHydration(withEventReplay()),
     provideStore({reddit: redditReducer}),
     provideEffects([RedditEffects]),
